@@ -1,0 +1,8 @@
+libhashtable
+*.log
+.vscode
+unit_tests
+*.gc*
+main.c
+a.out
+*.a
