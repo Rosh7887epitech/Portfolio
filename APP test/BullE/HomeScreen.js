@@ -21,7 +21,7 @@ function HomeScreen({ navigation, route }) {
 
     useEffect(() => {
         if (route.params?.newGroup) {
-            const newGroups = [...groups, {...route.params.newGroup, id: Date.now().toString()}]; // Assurez-vous que chaque nouveau groupe a un ID unique
+            const newGroups = [...groups, {...route.params.newGroup, id: Date.now().toString()}];
             setGroups(newGroups);
             AsyncStorage.setItem('groups', JSON.stringify(newGroups));
         }

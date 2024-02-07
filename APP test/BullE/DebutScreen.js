@@ -4,9 +4,14 @@ import { View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView } from 
 function DebutScreen({ navigation }) {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
+    const [members, setMembers] = useState('');
 
     const handleAddGroup = () => {
-        const newGroup = { title, description };
+        const membersArray = members.split(',')
+            .map(member => member.trim())
+            .filter(member => member !== '')
+            .map(member => ({ id: Date.now().toString() + Math.random().toString(), name: member }));
+        const newGroup = { title, description, members: membersArray };
         navigation.navigate('Tricount', { newGroup });
     };
 
@@ -25,6 +30,13 @@ function DebutScreen({ navigation }) {
                 placeholder="Description"
                 value={description}
                 onChangeText={setDescription}
+                placeholderTextColor="grey"
+            />
+            <TextInput
+                style={styles.input}
+                placeholder="Membres (séparés par des virgules)"
+                value={members}
+                onChangeText={setMembers}
                 placeholderTextColor="grey"
             />
             <TouchableOpacity style={styles.addButton} onPress={handleAddGroup}>
@@ -55,17 +67,13 @@ const styles = StyleSheet.create({
         fontSize: 18,
     },
     addButton: {
-        position: 'absolute',
-        bottom: 108,
-        right: 10,
         backgroundColor: '#e91e63',
         borderRadius: 30,
         paddingVertical: 10,
         paddingHorizontal: 20,
-        elevation: 8,
-        shadowOpacity: 0.3,
-        shadowRadius: 4,
-        shadowOffset: { height: 2, width: 0 },
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginTop: 20,
     },
     addButtonText: {
         color: 'white',
