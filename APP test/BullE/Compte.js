@@ -55,18 +55,18 @@ function GroupDetailsScreen({ route }) {
         <View style={styles.container}>
             <Text style={styles.total}>Total: {total.toFixed(2)} €</Text>
             <ScrollView style={styles.amountsList}>
-                {amounts.map((item, index) => (
-                    <View key={item.id} style={styles.amountItemRow}>
-                        <Text style={styles.amountItem}>
-                            {item.value.toFixed(2)} € - Payé par {
-                                group.members.find(member => member.id === item.paidBy)?.name || 'Membre Inconnu'
-                            }
-                        </Text>
-                        <TouchableOpacity onPress={() => handleDeleteAmount(item.id)} style={styles.deleteButton}>
-                            <Text style={styles.deleteButtonText}>X</Text>
-                        </TouchableOpacity>
-                    </View>
-                ))}
+            {amounts.map((item, index) => (
+                <View key={item.id} style={styles.amountItemRow}>
+                    <Text style={styles.amountItem}>
+                        {(item.value ? item.value.toFixed(2) : '0.00')} € - Payé par {
+                            group.members.find(member => member.id === item.paidBy)?.name || 'Membre Inconnu'
+                        }
+                    </Text>
+                    <TouchableOpacity onPress={() => handleDeleteAmount(item.id)} style={styles.deleteButton}>
+                        <Text style={styles.deleteButtonText}>X</Text>
+                    </TouchableOpacity>
+                </View>
+            ))}
             </ScrollView>
             <Text style={styles.title}>{group.title}</Text>
             <Picker

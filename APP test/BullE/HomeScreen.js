@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Alert, StatusBar, ScrollView } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Slider from '@candlefinance/slider';
 
 function HomeScreen({ navigation, route }) {
     const [groups, setGroups] = useState([]);
