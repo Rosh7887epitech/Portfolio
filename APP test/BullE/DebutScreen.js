@@ -60,14 +60,14 @@ const styles = StyleSheet.create({
     },
     input: {
         color: 'white',
-        borderBottomColor: 'grey',
+        borderBottomColor: '#fff',
         borderBottomWidth: 1,
         margin: 10,
         paddingVertical: 5,
         fontSize: 18,
     },
     addButton: {
-        backgroundColor: '#e91e63',
+        backgroundColor: 'white',
         borderRadius: 30,
         paddingVertical: 10,
         paddingHorizontal: 20,
@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
         marginTop: 20,
     },
     addButtonText: {
-        color: 'white',
+        color: 'black',
         fontSize: 16,
         fontWeight: 'bold',
     },

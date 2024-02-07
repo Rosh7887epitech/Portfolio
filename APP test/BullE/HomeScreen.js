@@ -43,7 +43,7 @@ function HomeScreen({ navigation, route }) {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.text}>Vos groupes</Text>
+            <Text style={styles.text}>Vos groupes :</Text>
             <ScrollView style={styles.groupsList}>
                 {groups.map((group, index) => (
                     <View key={index} style={styles.groupContainer}>
@@ -76,22 +76,24 @@ const styles = StyleSheet.create({
         color: 'white',
         fontSize: 20,
         position: 'absolute',
-        top: 50,
+        top: 10,
         left: 10,
         fontWeight: 'bold',
     },
     deleteButton: {
-        backgroundColor: 'red',
-        padding: 5,
+        backgroundColor: 'white',
+        padding: 7,
         borderRadius: 5,
+        width: 20,
+        height: 30,
     },
     deleteButtonText: {
-        color: 'white',
+        color: 'black',
         fontSize: 12,
         fontWeight: 'bold',
     },
     groupsList: {
-        marginTop: 70,
+        marginTop: 55,
         width: '100%',
     },
     groupContainer: {
@@ -99,15 +101,15 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         padding: 10,
         borderBottomWidth: 1,
-        borderBottomColor: 'grey',
+        borderBottomColor: '#808080',
     },
     groupTitle: {
         color: 'white',
-        fontSize: 16,
+        fontSize: 18,
         fontWeight: 'bold',
     },
     groupDescription: {
-        color: 'grey',
+        color: '#808080',
         fontSize: 14,
     },
     button: {

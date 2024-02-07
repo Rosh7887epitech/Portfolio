@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
         color: 'white',
         padding: 10,
         borderBottomWidth: 1,
-        borderBottomColor: 'grey',
+        borderBottomColor: '#808080',
     },
     amountItemRow: {
         flexDirection: 'row',
@@ -118,19 +118,20 @@ const styles = StyleSheet.create({
     },
     deleteButton: {
         marginLeft: 10,
-        backgroundColor: 'red',
+        backgroundColor: 'white',
         padding: 5,
         borderRadius: 5,
     },
     deleteButtonText: {
-        color: 'white',
+        color: 'black',
         fontSize: 12,
+        fontWeight: 'bold',
     },
     picker: {
         height: 50,
         width: '100%',
-        color: 'white',
-        backgroundColor: '#303030',
+        color: 'black',
+        backgroundColor: 'white',
         marginBottom: 20,
     },
     total: {
@@ -157,7 +158,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
     addButton: {
-        backgroundColor: '#e91e63',
+        backgroundColor: 'white',
         borderRadius: 30,
         paddingVertical: 10,
         paddingHorizontal: 20,
@@ -167,7 +168,7 @@ const styles = StyleSheet.create({
         marginBottom: 20,
     },
     addButtonText: {
-        color: 'white',
+        color: 'black',
         fontSize: 16,
         fontWeight: 'bold',
     },
