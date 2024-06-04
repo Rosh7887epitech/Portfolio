@@ -1,0 +1,94 @@
+#!/usr/bin/python3
+import sys
+import math
+import numpy as np
+
+def ascii_to_list(text):
+    return [ord(char) for char in text]
+
+def list_to_square_matrix(lst, size):
+    matrix = [[0 for _ in range(size)] for _ in range(size)]
+    for i in range(len(lst)):
+        matrix[i // size][i % size] = lst[i]
+    return matrix
+
+def list_to_message_matrix(lst, row_size):
+    col_size = -(-len(lst) // row_size)
+    matrix = [[0 for _ in range(row_size)] for _ in range(col_size)]
+    for i in range(len(lst)):
+        matrix[i // row_size][i % row_size] = lst[i]
+    return matrix
+
+def matrix_multiply(A, B):
+    result = [[0 for _ in range(len(B[0]))] for _ in range(len(A))]
+    for i in range(len(A)):
+        for j in range(len(B[0])):
+            for k in range(len(B)):
+                result[i][j] += A[i][k] * B[k][j]
+    return result
+
+def inverse_matrix(matrix):
+    det = np.linalg.det(matrix)
+    if det == 0:
+        raise ValueError("La matrice n'est pas inversible.")
+    cofactors = np.linalg.inv(matrix)
+    return cofactors
+
+def combined_encrypt_decrypt(key, message, encrypt=True):
+    key_ascii = ascii_to_list(key)
+    key_matrix_size = math.ceil(math.sqrt(len(key_ascii)))
+    key_matrix = list_to_square_matrix(key_ascii, key_matrix_size)
+
+    if encrypt:
+        message_ascii = ascii_to_list(message)
+        message_matrix = list_to_message_matrix(message_ascii, key_matrix_size)
+        result_matrix = matrix_multiply(message_matrix, key_matrix)
+        result = [val for row in result_matrix for val in row]
+        return result
+    else:
+        key_matrix_inverse = inverse_matrix(np.array(key_matrix))
+        num_cols = len(key_matrix)
+        encrypted_matrix = [message[i:i + num_cols] for i in range(0, len(message), num_cols)]
+        decrypted_matrix = matrix_multiply(encrypted_matrix, key_matrix_inverse)
+        decrypted_message = ''.join(chr(int(round(val)) % 256) for row in decrypted_matrix for val in row)
+        return decrypted_message.strip()
+
+def print_matrix(matrix):
+    """ Affiche la matrice. """
+    for row in matrix:
+        print(' '.join(map(str, row)))
+
+def main():
+    if len(sys.argv) != 4:
+        print("Usage: ./103cipher <message> <key> <mode>")
+        return
+
+    message = sys.argv[1]
+    key = sys.argv[2]
+    mode = sys.argv[3]
+
+    if mode not in ["0", "1"]:
+        print("Mode must be 0 (encrypt) or 1 (decrypt).")
+        return
+
+    key_ascii = ascii_to_list(key)
+    key_matrix_size = math.ceil(math.sqrt(len(key_ascii)))
+    key_matrix = list_to_square_matrix(key_ascii, key_matrix_size)
+
+    print("Key matrix:")
+    print_matrix(key_matrix)
+
+    if mode == "0":
+        encrypted_message = combined_encrypt_decrypt(key, message, encrypt=True)
+        print("\nEncrypted message:\n", ' '.join(map(str, encrypted_message)))
+    else:
+        try:
+            message = [int(num) for num in message.split()]
+        except ValueError:
+            print("Invalid encrypted message format.")
+            return
+        decrypted_message = combined_encrypt_decrypt(key, message, encrypt=False)
+        print("Decrypted message:", decrypted_message)
+
+if __name__ == "__main__":
+    main()

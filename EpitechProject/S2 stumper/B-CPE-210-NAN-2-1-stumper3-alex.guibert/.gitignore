@@ -1,0 +1,14 @@
+*.o
+*.log
+libmy.a
+rush3
+sujet.txt
+bin/
+'*'
+*.swp
+row.c
+libhashtable.a
+.vscode
+a.out
+test
+tictactoe

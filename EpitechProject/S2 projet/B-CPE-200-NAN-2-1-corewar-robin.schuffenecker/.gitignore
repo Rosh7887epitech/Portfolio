@@ -1,0 +1,6 @@
+*.o
+corewar
+.vscode
+*.cor
+a.out
+step4.c

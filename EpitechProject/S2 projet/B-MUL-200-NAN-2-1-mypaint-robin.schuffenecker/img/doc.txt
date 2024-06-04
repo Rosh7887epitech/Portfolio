@@ -1,0 +1,42 @@
+My_paint is a computer application designed to allow users to create and edit digital images in an intuitive manner.
+
+1. User Interface
+
+The user interface of the "Paint"-style software is designed to be user-friendly and accessible to users of all skill levels.
+Here are the main components of the interface:
+
+1.1. Menu Bar: Located at the top of the window, the menu bar contains drop-down menus for accessing various functions
+     such as File, Edit, View, Tools, etc.
+
+1.2. Toolbar: This bar features a selection of drawing and editing tools, such as brushes, pencils, shapes, text, fill, etc.
+     Users can select the desired tool by clicking on its icon.
+
+1.3. Drawing Area: The drawing area is the main workspace where users can create and modify their images.
+     It occupies the majority of the interface and allows direct interaction with drawing tools.
+
+1.4. Properties Panels: These panels, often located on the side of the window, offer customization options for selected tools.
+     For example, brush size, color, opacity, etc.
+
+2. Key Features
+
+My_paint offers a set of powerful features for image creation and manipulation. Here are some of the key features:
+
+2.1. Free Drawing: Users can draw freely on the drawing area using various tools such as brush, pencil, eraser, etc.
+
+2.2. Shapes and Lines: The software allows drawing predefined shapes such as circles, rectangles, straight lines, etc.,
+     making it easier to create diagrams and charts.
+
+2.3. Text: Users can add text to their images, choosing from a variety of fonts, sizes, and styles.
+
+2.4. Filters and Effects: The software offers a range of filters and special effects to enhance and transform images,
+     such as blur, sharpness, saturation, etc.
+
+3. Advanced Usage
+
+In addition to basic features, My_paint offers advanced options for experienced users:
+
+3.1. Layers: Layers allow working on different parts of an image independently, making it easier to manage
+     modifications and adjustments.
+
+3.2. Import and Export: It is possible to import images from other sources and export creations in various formats
+     such as JPEG, PNG, GIF, etc.

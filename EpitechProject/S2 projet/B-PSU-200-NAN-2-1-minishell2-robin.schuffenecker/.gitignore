@@ -1,0 +1,5 @@
+.vscode
+coding-style-reports.log
+*.o
+*.a
+test.txt

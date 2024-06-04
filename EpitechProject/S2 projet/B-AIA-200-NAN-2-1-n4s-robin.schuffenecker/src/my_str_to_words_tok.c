@@ -1,0 +1,42 @@
+/*
+** EPITECH PROJECT, 2023
+** my_str_to_word_array.c
+** File description:
+** split string and supp spaces
+*/
+
+#include "my.h"
+
+char **my_str_to_word_tok(char *str, char *sep)
+{
+    int count = 0;
+    char *temp = NULL;
+    char **array = NULL;
+    char *base_str = NULL;
+
+    base_str = strdup(str);
+    temp = strtok(base_str, sep);
+    while (temp != NULL) {
+        count++;
+        temp = strtok(NULL, sep);
+    }
+    array = malloc(sizeof(char *) * (count + 1));
+    temp = strtok(str, sep);
+    for (int i = 0; i < count; i++) {
+        array[i] = strdup(temp);
+        temp = strtok(NULL, sep);
+    }
+    array[count] = NULL;
+    return array;
+}
+
+int nb_of_char(char *str, char c)
+{
+    int k = 0;
+
+    for (int i = 0; str[i] != '\0'; i++) {
+        if (str[i] == c)
+            k++;
+    }
+    return k;
+}

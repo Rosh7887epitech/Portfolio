@@ -1,0 +1,7 @@
+.vscode/settings.json
+main.c
+a.out
+lib/my/coding-style-reports.log
+.vscode/launch.json
+.vscode/tasks.json
+lib/my/put_g.c

@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "organized.h": "c",
+        "stdlib.h": "c",
+        "bootstrap.h": "c",
+        "my.h": "c"
+    }
+}

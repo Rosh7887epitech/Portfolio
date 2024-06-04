@@ -1,0 +1,88 @@
+name: Chocolatine
+
+on:
+  push:
+    branches-ignore:
+      - 'ga-ignore-*'
+  pull_request:
+    branches-ignore:
+      - 'ga-ignore-*'
+
+env:
+  EXECUTABLES: "corewar"
+
+jobs:
+  check_repo:
+    runs-on: ubuntu-latest
+    outputs:
+      is_correct_repo: ${{ steps.check_repo.outputs.is_correct_repo }}
+    steps:
+      - name: check url
+        id: check_repo
+        run: |
+          if [ "${{ github.event.repository.ssh_url }}" != "${{ env.MIRROR_URL }}" ]; then
+            echo "is_correct_repo=true" >> $GITHUB_OUTPUT
+          else
+            echo "is_correct_repo=false" >> $GITHUB_OUTPUT
+          fi
+
+
+  check_coding_style:
+    needs: check_repo
+    if: ${{ needs.check_repo.outputs.is_correct_repo == 'true' }}
+    runs-on: ubuntu-latest
+    container: ghcr.io/epitech/coding-style-checker:latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+
+      - name: run coding_style checker
+        run: |
+          check.sh $(pwd) $(pwd)
+          if [ -s coding-style-reports.log ]; then
+            while IFS= read -r line; do
+              iom=$(echo "$line" | cut -d ':' -f 3)
+              file=$(echo "$line" | cut -d ':' -f 1)
+              n_line=$(echo "$line" | cut -d ':' -f 2)
+              whos_error=$(echo "$line" | cut -d ':' -f 4)
+              echo "::error title=$iom coding-style error : $file $n_line::$whos_error"
+            done < coding-style-reports.log
+            exit 1
+          fi
+
+  check_program_compilation:
+    needs: check_coding_style
+    runs-on: ubuntu-latest
+    container: epitechcontent/epitest-docker
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v4
+
+      - name: compilation
+        run: make
+        timeout-minutes: 2
+
+      - name: clean
+        run: make clean
+
+      - name: check exe
+        run: |
+          IFS=',' read -ra ADDR <<< "$EXECUTABLES"
+          for i in "${ADDR[@]}"; do
+            if [ ! -x "$i" ]; then
+              echo "::error file=$i is not executable or does not exist."
+              exit 1
+            fi
+          done
+
+  # run_tests:
+  #   needs: check_program_compilation
+  #   runs-on: ubuntu-latest
+  #   container: epitechcontent/epitest-docker
+  #   steps:
+  #     - name: checkout repo
+  #       uses: actions/checkout@v4
+
+  #     - name: run tests
+  #       run: make tests_run
+  #       timeout-minutes: 2

@@ -1,0 +1,59 @@
+#!/usr/bin/python3
+import sys
+import math
+
+def print_h():
+    print("USAGE")
+    print("\t./104neutrinos n a h sd\n")
+    print("DESCRIPTION")
+    print("\tn\tnumber of values")
+    print("\ta\tarithmetic mean")
+    print("\th\tharmonic mean")
+    print("\tsd\tstandard deviation")
+    sys.exit(0)
+
+import math
+
+def update_statistics(n, a, h, sd, new_value):
+    new_arithmetic_mean = ((n - 1) * a + int(new_value)) / n
+    new_harmonic_mean = (n) / (((n - 1)/ h) + (1 / new_value))
+    new_standard_deviation = math.sqrt((1 / n) * ((n - 1) * ((sd**2) + (a**2)) + (int)(new_value**2)) - (new_arithmetic_mean**2))
+    rms = math.sqrt((new_arithmetic_mean**2) + (new_standard_deviation**2))
+    return new_arithmetic_mean, new_harmonic_mean, new_standard_deviation, rms
+
+
+def main():
+    if (len(sys.argv) != 2 and len(sys.argv) != 5):
+        sys.exit(84)
+    if len(sys.argv) == 2 and sys.argv[1] == "-h":
+        print_h()
+        sys.exit(0)
+    if (sys.argv[1][0] == '-'):
+        sys.exit(84)
+    try :
+        n, mean, harmonic_mean, std_dev = map(float, sys.argv[1:])
+    except ValueError:
+        sys.exit(84)
+    if (n < 0 or mean < 0 or harmonic_mean < 0 or std_dev < 0):
+        sys.exit(84)
+    while(1):
+        new_value = (input("Enter next value: "))
+        if new_value == "END":
+            sys.exit(0)
+        try :
+            new_value = float(new_value)
+        except ValueError:
+            sys.exit(84)
+        if (new_value <= 0) :
+            sys.exit(84)
+        n += 1
+        mean, harmonic_mean, std_dev, rms = update_statistics(n, mean, harmonic_mean, std_dev, new_value)
+        print("    Number of values:\t{:.0f}".format(n))
+        print("    Standard deviation:\t{:.2f}".format(std_dev))
+        print("    Arithmetic mean:\t{:.2f}".format(mean))
+        print("    Root mean square:\t{:.2f}".format(rms))
+        print("    Harmonic mean:\t{:.2f}".format(harmonic_mean))
+        print()
+
+if __name__ == "__main__":
+    main()

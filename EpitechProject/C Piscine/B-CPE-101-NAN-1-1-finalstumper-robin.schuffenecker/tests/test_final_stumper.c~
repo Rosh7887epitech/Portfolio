@@ -1,0 +1,22 @@
+/*
+** EPITECH PROJECT, 2023
+** test my_printf
+** File description:
+** full test for my_printf
+*/
+
+#include <criterion/criterion.h>
+#include <criterion/redirect.h>
+#include "../lib/my/rush3.h"
+
+void redirect_all_std(void)
+{
+    cr_redirect_stdout ();
+    cr_redirect_stderr ();
+}
+
+Test(rush3.c, simple_string, .init = redirect_all_std)
+{
+    rush3 ("");
+    cr_assert_stdout_eq_str ("[rush-1-1] 4 4");
+}

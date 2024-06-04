@@ -1,0 +1,88 @@
+version: "3"
+
+services:
+  db:
+    image: postgres:16
+    restart: always
+    environment:
+      - POSTGRES_HOST=db
+      - POSTGRES_PORT=5432
+      - POSTGRES_DB=db
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+    volumes:
+      - ./schema.sql:/docker-entrypoint-initdb.d/schema.sql
+      - db-data:/var/lib/postgresql
+    networks:
+      - result-tier
+      - back-tier
+
+#on dit redi"ssssse"
+
+  redis:
+    image: redis:7
+    restart: always
+    ports:
+      - "6379:6379"
+    networks:
+      - poll-tier
+      - back-tier
+
+# Il y a 3 containers
+# donc oui il y a deux ports 80
+
+  result:
+    build: ./result
+    restart: always
+    ports:
+      - "5001:80"
+    environment:
+      - POSTGRES_HOST=db
+      - POSTGRES_PORT=5432
+      - POSTGRES_DB=db
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+    networks:
+      - result-tier
+    depends_on:
+      - db
+
+  poll:
+    build: ./poll
+    restart: always
+    ports:
+      - "5000:80"
+    environment:
+      - REDIS_HOST=redis
+    networks:
+      - poll-tier
+    depends_on:
+      - redis
+
+  worker:
+    build: ./worker
+    restart: always
+    environment:
+      - REDIS_HOST=redis
+      - POSTGRES_HOST=db
+      - POSTGRES_PORT=5432
+      - POSTGRES_DB=db
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+    networks:
+      - back-tier
+    depends_on:
+      - redis
+      - db
+
+#Fonctionne sans volume
+
+networks:
+  poll-tier:
+  result-tier:
+  back-tier:
+
+# le volume sauvegarde et ne stock pas temporairement
+
+volumes:
+  db-data:

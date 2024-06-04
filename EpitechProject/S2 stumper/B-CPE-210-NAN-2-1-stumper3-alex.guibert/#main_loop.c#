@@ -1,0 +1,19 @@
+/*
+** EPITECH PROJECT, 2024
+** stumper2
+** File description:
+** main
+*/
+
+#include "include/my.h"
+
+static void display_grid(char **grid)
+{
+    for (int i = 0; grid[i] != NULL; i++) {
+        printf("%s\n", grid[i]);
+    }
+}        verif_map_one(game->grid);
+        player_two(game);
+        verif_map_two(game->grid);
+    }
+}

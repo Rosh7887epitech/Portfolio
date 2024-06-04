@@ -1,0 +1,9 @@
+{
+    "C_Cpp.errorSquiggles": "disabled",
+    "files.associations": {
+        "my.h": "c",
+        "navy.h": "c",
+        "include.h": "c",
+        "stddef.h": "c"
+    }
+}
