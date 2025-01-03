@@ -20,7 +20,7 @@ SRC	=	src/main.c \
 
 OBJ	=	$(SRC:%.c=%.o)
 
-NAME	=	my_sokoban
+NAME	=	Soko
 
 all:	$(NAME)
 

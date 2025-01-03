@@ -20,7 +20,7 @@ SRC	=	src/main.c \
 
 OBJ		=	$(SRC:.c=.o)
 
-NAME 	=	my_hunter
+NAME 	=	SpaceDuckShoot
 
 COMPIL 	= -I./include -L./lib/my -lmy -Wall -Wextra -Werror
 

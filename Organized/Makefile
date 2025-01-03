@@ -27,7 +27,7 @@ CFLAGS += -g
 
 OBJ	=	$(SRC:.c=.o)
 
-NAME	=	organized
+NAME	=	Organized
 
 all:	$(NAME)
 

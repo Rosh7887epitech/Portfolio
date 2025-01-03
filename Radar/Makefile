@@ -22,7 +22,7 @@ SRC	=	src/main.c \
 
 OBJ		=	$(SRC:.c=.o)
 
-NAME 	=	my_radar
+NAME 	=	Radar_Sim
 
 COMPIL 	= -I./include -L./lib/my -lmy -Wall -Wextra -Werror
 
