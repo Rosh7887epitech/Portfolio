@@ -1,25 +1,21 @@
-BSQ - Biggest Square
+# BSQ - Biggest Square
 
-Description
-
+## Description
 BSQ est une implémentation de l'algorithme permettant de trouver le plus grand carré vide dans une carte avec des obstacles.
 
-Technologies utilisées
+## Technologies utilisées
+- Langage : C
+- Bibliothèques : stdio.h, stdlib.h
 
-Langage : C
-
-Bibliothèques : stdio.h, stdlib.h
-
-Installation et exécution
-
+## Installation et exécution
+```bash
 cd BSQ
 make
 ./bsq fichier_carte.txt
+```
 
-Fonctionnement
-
+## Fonctionnement
 Le programme analyse un fichier contenant une grille et détecte la plus grande zone vide possible en marquant un carré maximal.
 
-Licence
-
+## Licence
 Ce projet est sous licence MIT.
