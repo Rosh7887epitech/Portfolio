@@ -1,25 +1,22 @@
-Navy_War - Bataille Navale
+# Navy_War - Bataille Navale
 
-Description
-
+## Description
 Navy_War est une implémentation du jeu de bataille navale jouable en réseau entre deux joueurs.
 
-Technologies utilisées
+## Technologies utilisées
+- Langage : C
+- Communication : Signaux UNIX
 
-Langage : C
-
-Communication : Signaux UNIX
-
-Installation et exécution
-
+## Installation et exécution
+```bash
 cd Navy_War
 make
 ./navy
+```
 
-Fonctionnement
-
+## Fonctionnement
 Le jeu permet à deux joueurs de se connecter et de jouer tour à tour en plaçant et attaquant les navires de l'adversaire.
 
-Licence
-
+## Licence
 Ce projet est sous licence MIT.
+
