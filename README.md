@@ -1,95 +1,46 @@
-# Personal Projects Portfolio / Portfolio de Projets Personnels
+# Portfolio de Projets Personnels
 
 Bienvenue sur mon portfolio de projets personnels ! Ce dépôt regroupe plusieurs projets que j'ai réalisés durant mon parcours à l'EPITECH ainsi que des initiatives personnelles. Ces projets illustrent mes compétences en développement logiciel, en algorithmie et en conception de jeux.
 
-Welcome to my personal projects portfolio! This repository contains various projects I have completed during my studies at EPITECH, as well as personal initiatives. These projects showcase my skills in software development, algorithms, and game design.
+## Table des Matières
 
-## Table des Matières / Table of Contents
-
-- [Projets / Projects](#projets--projects)
-- [Technologies Utilisées / Technologies Used](#technologies-utilisees--technologies-used)
+- [Projets](#projets)
+- [Technologies Utilisées](#technologies-utilisées)
 - [Installation](#installation)
-- [Utilisation / Usage](#utilisation--usage)
+- [Utilisation](#utilisation)
 - [Contribution](#contribution)
-- [Licence / License](#licence--license)
+- [Licence](#licence)
 
----
+## Projets
 
-## Projets / Projects
+Le dépôt est structuré en quatre dossiers principaux :
 
-### BSQ
-- **Description** : Implémentation de l'algorithme "Biggest Square" permettant de trouver le plus grand carré vide dans une carte avec des obstacles.
-- **Langage / Language** : C
-- **Description**: Implementation of the "Biggest Square" algorithm to find the largest empty square in a map with obstacles.
+1. **1st_Year** : Projets réalisés durant ma première année à l'EPITECH.
+2. **2nd_Year** : Projets réalisés durant ma deuxième année à l'EPITECH.
+3. **Game** : Jeux développés ou en cours de développement.
+4. **Technical_Project** : Projets purement techniques.
 
-### Navy_War
-- **Description** : Version du jeu de bataille navale permettant à deux joueurs de s'affronter en réseau.
-- **Langage / Language** : C
-- **Description**: A network-based battleship game where two players compete.
+### Exemples de Projets
 
-### Radar
-- **Description** : Simulation de détection et suivi d'objets à l'aide d'un radar.
-- **Langage / Language** : C++
-- **Description**: Simulation of object detection and tracking using radar.
+- **BSQ** (1st_Year) : Implémentation de l'algorithme "Biggest Square" permettant de trouver le plus grand carré vide dans une carte comportant des obstacles.
+- **Navy_War** (2nd_Year) : Jeu de bataille navale jouable en réseau entre deux joueurs grâce à une connexion en SSH.
+- **RPG** (Game/C) : Création d'un jeu de type RPG en 2D/PixelArt.
+- **42sh** (Technical_Project) : Redéveloppement du shell TCSH à partir de zéro.
 
-### SOKO
-- **Description** : Réimplémentation du jeu de puzzle Sokoban, où le joueur doit pousser des caisses vers des emplacements cibles.
-- **Langage / Language** : C
-- **Description**: Reimplementation of the Sokoban puzzle game, where the player must push crates to designated spots.
+## Technologies Utilisées
 
-### SpaceDuckShoot
-- **Description** : Jeu de tir spatial mettant en scène des canards, développé pour illustrer la programmation de jeux.
-- **Langage / Language** : C++
-- **Description**: A space shooting game featuring ducks, developed to showcase game programming.
-
----
-
-## Technologies Utilisées / Technologies Used
-
-- C / C++
-- Bibliothèques standard (stdio.h, stdlib.h, etc.) / Standard libraries (stdio.h, stdlib.h, etc.)
-- SDL (pour les projets avec interface graphique) / SDL (for projects with graphical interface)
-- Système de gestion de version Git / Version control system Git
-
----
+- **Langages** : C, C++, Python
+- **Bibliothèques** : ncurses, SFML
 
 ## Installation
 
-1. **Cloner le dépôt / Clone the repository**
-```bash
-    git clone https://github.com/Rosh7887epitech/personal-projects-portfolio.git
-    cd personal-projects-portfolio
-```
-2. **Compiler un projet (ex: BSQ) / Compile a project (e.g., BSQ)**
-```bash
-    cd BSQ
-    make
-```
-3. **Exécuter le programme / Run the program**
-```bash
-    ./bsq fichier_carte.txt
-```
+Chaque projet dispose de son propre fichier README avec des instructions spécifiques d'installation et d'exécution. Veuillez vous référer aux README individuels dans les sous-dossiers correspondants pour plus de détails.
 
----
+## Utilisation
 
-## Utilisation / Usage
+Après avoir installé un projet spécifique selon les instructions fournies, vous pouvez l'exécuter en suivant les commandes indiquées dans son README respectif.
 
-Chaque projet dispose de son propre exécutable et mode d'emploi. Consulte le README individuel des projets (si disponible) ou exécute le programme avec `--help` pour plus d'informations.
+## Licence
 
-Each project has its own executable and usage instructions. Check the individual project README (if available) or run the program with `--help` for more information.
-
----
-
-
-## Licence / License
-
-Ce projet est sous licence MIT - voir le fichier [LICENSE](LICENSE) pour plus d'informations.
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-Merci d'avoir visité mon portfolio ! 🚀
-
-Thank you for visiting my portfolio! 🚀
+Ce projet est sous licence MIT. Veuillez consulter le fichier LICENSE pour plus de détails.
 
