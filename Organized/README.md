@@ -6,7 +6,6 @@ pour rendre la gestion des fichiers plus simple et plus structurée.
 
 ## Technologies utilisées
 - Langage : C
-- Bibliothèque : ncurses
 
 ## Installation et exécution
 ```bash
