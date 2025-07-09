@@ -1,0 +1,63 @@
+.button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.play-button {
+    background: linear-gradient(135deg, #199663, #1e845b);
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 50px;
+    font-size: 1.3em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(25, 150, 99, 0.3);
+    min-width: 200px;
+}
+
+.play-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(25, 150, 99, 0.4);
+    background: linear-gradient(135deg, #1e845b, #199663);
+}
+
+.scoreboard-button {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    min-width: 200px;
+}
+
+.scoreboard-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+    background: linear-gradient(135deg, #764ba2, #667eea);
+}
+
+/* Animation pour les boutons */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.button-container {
+    animation: fadeInUp 0.8s ease-out;
+}
