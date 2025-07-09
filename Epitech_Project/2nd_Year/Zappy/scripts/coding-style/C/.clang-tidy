@@ -1,0 +1,86 @@
+---
+# Epitech C Coding Style - Clang-Tidy Configuration
+Checks: '
+  # Core checks for C code quality
+  bugprone-*,
+  cert-*,
+  clang-analyzer-*,
+  misc-*,
+  performance-*,
+  portability-*,
+  readability-*,
+
+  # Specific checks for Epitech rules
+  readability-function-size,
+  readability-identifier-naming,
+  readability-magic-numbers,
+  readability-braces-around-statements,
+
+  # Disable checks that conflict with Epitech style
+  -readability-identifier-length,
+  -readability-magic-numbers,
+  -readability-isolate-declaration,
+  -readability-static-accessed-through-instance,
+  -cert-dcl21-cpp,
+  -cert-err58-cpp,
+  -bugprone-easily-swappable-parameters,
+  -misc-non-private-member-variables-in-classes,
+  -clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling,
+
+  # Disable modern C++ checks (we are coding in C)
+  -modernize-*,
+  -cppcoreguidelines-*,
+  -google-*,
+  -llvm-*,
+  -hicpp-*,
+  -fuchsia-*,
+  -llvmlibc-*,
+  -altera-*'
+
+WarningsAsErrors: ''
+HeaderFilterRegex: '.*\.(h|hpp)$'
+FormatStyle: file
+
+CheckOptions:
+  # C-F4: Function body must not exceed 20 lines
+  - key: readability-function-size.LineThreshold
+    value: '20'
+
+  # C-F5: Function must not have more than 4 parameters
+  - key: readability-function-size.ParameterThreshold
+    value: '4'
+
+  # C-C1: Conditional branching depth limit
+  - key: readability-function-size.BranchThreshold
+    value: '3'
+
+  # C-V1: Naming conventions - snake_case for variables and functions
+  - key: readability-identifier-naming.VariableCase
+    value: 'lower_case'
+  - key: readability-identifier-naming.FunctionCase
+    value: 'lower_case'
+  - key: readability-identifier-naming.ParameterCase
+    value: 'lower_case'
+  - key: readability-identifier-naming.LocalVariableCase
+    value: 'lower_case'
+  - key: readability-identifier-naming.GlobalVariableCase
+    value: 'lower_case'
+
+  # C-V1: UPPER_SNAKE_CASE for macros and constants
+  - key: readability-identifier-naming.MacroDefinitionCase
+    value: 'UPPER_CASE'
+  - key: readability-identifier-naming.EnumConstantCase
+    value: 'UPPER_CASE'
+  - key: readability-identifier-naming.ConstantCase
+    value: 'UPPER_CASE'
+
+  # C-V1: Typedef names must end with _t
+  - key: readability-identifier-naming.TypedefSuffix
+    value: '_t'
+  - key: readability-identifier-naming.StructCase
+    value: 'lower_case'
+
+  # Allow macros in cognitive complexity calculation
+  - key: readability-function-cognitive-complexity.IgnoreMacros
+    value: 'true'
+---

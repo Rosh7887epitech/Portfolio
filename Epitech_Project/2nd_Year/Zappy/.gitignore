@@ -1,0 +1,69 @@
+# Project binary files
+zappy_server
+zappy_gui
+zappy_ai
+
+# Project tests binaries
+unit_tests
+tests_zappy_net
+functional_tests_zappy_net
+
+# Subject binary files
+zappy_gui.AppImage
+
+# Coding style files
+server/.clang-format
+gui/.clang-format
+libzappy_net/.clang-format
+
+# Graphical
+gui/build/
+
+# AI
+*.pyc
+
+#vscode
+.vscode
+
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# Debug files
+*.log
+
+# Coverage files
+*.gcda
+*.gcno
+
+# Python cache files
+*.pyc

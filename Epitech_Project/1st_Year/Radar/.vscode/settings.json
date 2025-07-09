@@ -1,0 +1,13 @@
+{
+    "files.associations": {
+        "game.h": "c",
+        "my.h": "c",
+        "include.h": "c",
+        "graphics.h": "c",
+        "array": "c",
+        "string_view": "c",
+        "initializer_list": "c",
+        "random": "c",
+        "sstream": "c"
+    }
+}

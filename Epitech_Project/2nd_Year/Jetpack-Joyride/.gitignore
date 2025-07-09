@@ -1,0 +1,16 @@
+*.o
+.vscode
+*.a
+vgcore.*
+*gc*
+a.out
+unit_te*
+*.bin
+*.so
+.vscode
+jetpack_server
+jetpack_client
+*.txt
+!doc.txt
+.clang-format
+

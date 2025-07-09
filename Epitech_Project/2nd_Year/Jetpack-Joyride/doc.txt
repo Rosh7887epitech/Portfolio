@@ -1,0 +1,161 @@
+Game Network Protocol Specification                             Evann Bloutin
+                                                                  Jules Fayet
+                                                                Romain Berard
+                                                             Titouan Bouillot
+                                                          Robin Schuffenecker
+Request for Comments: 4242                                     Epitech Nantes
+Category: Experimental                                         April 15, 2025
+
+                  Game Communication Protocol v2
+
+Status of This Memo
+
+   This memo provides information for the community interested in simple
+   multiplayer game networking. It does not specify an Internet standard
+   of any kind. Distribution of this memo is unlimited.
+
+Abstract
+
+   This document defines a structured, numeric-command-based protocol
+   used in a game network architecture. Each message consists of a
+   numeric code, space-separated parameters, and line endings. The
+   protocol enables clients to perform game-related operations such as
+   starting a session, retrieving positions, listing entities, and
+   reporting scores or victory status.
+
+Table of Contents
+
+   1. Introduction ...............................................2
+   2. Terminology ................................................2
+   3. Protocol Overview ..........................................2
+   4. Command Reference ..........................................3
+     4.1. Session Management ....................................3
+     4.2. Game State Queries ....................................4
+     4.3. Entity Listing ........................................5
+     4.4. Score and Victory .....................................5
+   5. Map Format .................................................6
+   6. Security Considerations ....................................7
+   7. References .................................................7
+
+1. Introduction
+
+   The protocol is designed to support communication between a client and
+   a central game server. Communication is established using numerical
+   commands and follows a consistent structure to ensure clarity and ease
+   of parsing.
+
+2. Terminology
+
+   - <SP>: A single ASCII space character (0x20).
+   - <CRLF>: A carriage return followed by a line feed (0x0D 0x0A).
+   - [ID]: A numeric identifier for a player or request.
+   - (x;y): A 2D coordinate.
+   - [NBPLAYER]: Total number of players.
+   - [NAME]: Entity name, such as COIN or ZAPPY.
+   - [SCORE]: Player score.
+   - [STATE]: Game state: -1 = Running, 0 = Lost, 1 = Win.
+
+3. Protocol Overview
+
+   Messages are exchanged in a client-server fashion using defined codes.
+   The client sends a command; the server responds with the corresponding
+   response code. All messages must terminate with <CRLF>.
+
+4. Command Reference
+
+4.1. Session Management
+
+   QUIT
+     -> 100 <SP> QUIT <CRLF>
+     <- 101: <SP> [ID] <CRLF>
+
+   CONNECTED
+     -> 300 <SP> CONNECTED <CRLF>
+     <- 301: <SP> [ID] OK <CRLF>
+
+   START GAME
+     -> 600 <SP> START <CRLF>
+     <- 601: <SP> START <CRLF>
+
+4.2. Game State Queries
+
+   MOVE UP
+     -> 200 <SP> UP <CRLF>
+     <- 201: <SP> [ID] OK <CRLF>
+
+   PLAYER POSITIONS
+     -> 400 <SP> POSITION <CRLF>
+     <- 401: <SP> [ID] (x;y) <CRLF>
+
+   Example:
+     -> 400 <SP> POSITION <CRLF>
+     <- 401: <SP> 1 (500;500) <CRLF>
+     <- 401: <SP> 2 (500;550) <CRLF>
+
+   PLAYER COUNT
+     -> 500 <SP> NBPLAYER <CRLF>
+     <- 501: <SP> [NBPLAYER] <CRLF>
+
+4.3. Entity Listing
+
+   ENTITY POSITIONS
+     -> 700 <SP> ENTITY <CRLF>
+     <- 701: <SP> [NAME] (x;y) <CRLF>
+
+   Example:
+     -> 700 <SP> ENTITY <CRLF>
+     <- 701: <SP> COIN (500;500) <CRLF>
+     <- 701: <SP> COIN (550;500) <CRLF>
+     <- 701: <SP> COIN (600;500) <CRLF>
+     <- 701: <SP> ZAPPY (500;500) <CRLF>
+     <- 701: <SP> ZAPPY (500;550) <CRLF>
+     <- 701: <SP> ZAPPY (500;600) <CRLF>
+
+4.4. Score and Victory
+
+   GET SCORE
+     -> 800 <SP> SCORE <CRLF>
+     <- 801: <SP> [SCORE] <CRLF>
+
+   VICTORY STATUS
+     -> 900 <SP> VICTORY <CRLF>
+     <- 901: <SP> [STATE] <CRLF>
+
+   Where:
+     -1 = Game Running
+      0 = Player Lost
+      1 = Player Won
+
+5. Map Format
+
+   The game map is represented as a 2D grid of characters, where each
+   character represents a specific type of entity or terrain. The map is
+   transmitted as a series of lines, each terminated by <CRLF>.
+
+   Example Map:
+     __________
+     __________
+     ___c______
+     ______e___
+     __________
+     __________
+
+   Legend:
+     - `_`: Empty space
+     - `c`: Coin
+     - `e`: Zappy (enemy or entity)
+
+   The map format allows clients to visualize the game environment and
+   plan their actions accordingly.
+
+6. Security Considerations
+
+   This protocol is plaintext and does not include authentication or
+   encryption. It should only be used in trusted networks. In production
+   deployments, consider tunneling this protocol through TLS.
+
+7. References
+
+   [1]  RFC 7322, "RFC Style Guide", J. Flanagan, Ed., September 2014.
+   [2]  RFC 6455, "The WebSocket Protocol", I. Fette, A. Melnikov.
+   [3]  Minecraft Protocol Wiki - https://wiki.vg/Protocol

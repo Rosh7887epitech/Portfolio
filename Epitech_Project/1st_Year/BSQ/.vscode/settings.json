@@ -1,0 +1,10 @@
+{
+    "C_Cpp.errorSquiggles": "disabled",
+    "files.associations": {
+        "*.tcc": "c",
+        "include.h": "c",
+        "sstream": "c",
+        "my.h": "c",
+        "bsq.h": "c"
+    }
+}

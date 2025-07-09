@@ -1,0 +1,8 @@
+raytracer
+build
+*.o
+*.txt
+*.log
+.vscode
+.clang-format
+Doxyfile
